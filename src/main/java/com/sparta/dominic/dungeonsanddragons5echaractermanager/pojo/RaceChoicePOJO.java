@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Collection;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RacesChoicePOJO {
+public class RaceChoicePOJO {
 
     @JsonProperty("results")
     private Collection<RaceIndexPOJO> races;

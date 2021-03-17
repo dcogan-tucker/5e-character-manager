@@ -3,15 +3,13 @@ package com.sparta.dominic.dungeonsanddragons5echaractermanager.pojo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Collection;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ClassChoicePOJO {
+public class ClassPOJO {
 
-    @JsonProperty("results")
-    private Collection<ClassIndexPOJO> classes;
+    @JsonProperty("proficiency_choices")
+    private ProficiencyChoicePOJO proficiencyChoices;
 
-    public Collection<ClassIndexPOJO> getClasses() {
-        return classes;
+    public ProficiencyChoicePOJO getProficiencyChoices() {
+        return proficiencyChoices;
     }
 }
