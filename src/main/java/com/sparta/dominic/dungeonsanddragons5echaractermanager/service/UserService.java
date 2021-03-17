@@ -3,7 +3,6 @@ package com.sparta.dominic.dungeonsanddragons5echaractermanager.service;
 import com.sparta.dominic.dungeonsanddragons5echaractermanager.entity.UserEntity;
 import com.sparta.dominic.dungeonsanddragons5echaractermanager.repository.UserRepository;
 import com.sparta.dominic.dungeonsanddragons5echaractermanager.security.PasswordEncoder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
