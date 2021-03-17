@@ -2,6 +2,7 @@ package com.sparta.dominic.dungeonsanddragons5echaractermanager.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "users", schema = "5e_character_manager")
@@ -11,9 +12,8 @@ public class UserEntity {
     private String password;
     private String role;
     private Byte enabled;
-
-    @Transient
     private transient String passwordConfirmation;
+    private Set<CharacterEntity> characters;
 
     @Id
     @Column(name = "user_id")
@@ -65,12 +65,20 @@ public class UserEntity {
         this.enabled = enabled;
     }
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public Set<CharacterEntity> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(Set<CharacterEntity> characters) {
+        this.characters = characters;
+    }
+
     @Transient
     public String getPasswordConfirmation() {
         return passwordConfirmation;
     }
 
-    @Transient
     public void setPasswordConfirmation(String passwordConfirmation) {
         this.passwordConfirmation = passwordConfirmation;
     }
