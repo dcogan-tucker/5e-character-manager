@@ -5,6 +5,7 @@ import com.sparta.dominic.dungeonsanddragons5echaractermanager.service.SecurityS
 import com.sparta.dominic.dungeonsanddragons5echaractermanager.service.UserService;
 import com.sparta.dominic.dungeonsanddragons5echaractermanager.service.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -71,5 +72,10 @@ public class UserController {
     @GetMapping({"/", "/welcome"})
     public String welcome(Model model) {
         return "welcome";
+    }
+
+    @GetMapping("/character-creation")
+    public String characterCreation() {
+        return "character-creation";
     }
 }
