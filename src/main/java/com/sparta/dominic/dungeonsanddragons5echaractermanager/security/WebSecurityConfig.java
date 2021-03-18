@@ -28,6 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.authorizeRequests()
+                .antMatchers("/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
