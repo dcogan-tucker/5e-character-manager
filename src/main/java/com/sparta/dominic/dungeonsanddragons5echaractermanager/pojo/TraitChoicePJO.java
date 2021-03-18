@@ -11,13 +11,13 @@ public class TraitChoicePJO {
     @JsonProperty("choose")
     private int numberToChoose;
     @JsonProperty("from")
-    private Collection<TraitIndexPOJO> traits;
+    private Collection<TraitIndexPOJO> traitOptions;
 
     public int getNumberToChoose() {
         return numberToChoose;
     }
 
-    public Collection<TraitIndexPOJO> getTraits() {
-        return traits;
+    public Collection<TraitIndexPOJO> getTraitOptions() {
+        return traitOptions;
     }
 }

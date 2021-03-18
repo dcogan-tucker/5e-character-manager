@@ -11,7 +11,7 @@ public class RaceChoicePOJO {
     @JsonProperty("results")
     private Collection<RaceIndexPOJO> races;
 
-    public Collection<RaceIndexPOJO> getClasses() {
+    public Collection<RaceIndexPOJO> getRaces() {
         return races;
     }
 }

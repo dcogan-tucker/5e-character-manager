@@ -8,8 +8,14 @@ public class ProficiencyIndexPOJO {
 
     @JsonProperty("index")
     public String index;
+    @JsonProperty("name")
+    public String name;
 
     public String getIndex() {
         return index;
+    }
+
+    public String getName() {
+        return name;
     }
 }

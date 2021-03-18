@@ -8,8 +8,14 @@ public class ClassIndexPOJO {
 
     @JsonProperty("index")
     private String index;
+    @JsonProperty("name")
+    private String name;
 
     public String getIndex() {
         return index;
+    }
+
+    public String getName() {
+        return name;
     }
 }
