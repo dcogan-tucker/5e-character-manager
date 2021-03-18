@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="form-group" th:fragment="raceChoice">
+        <select class="w-100 form-control" th:object="${raceSelection}" name="race"
+                onchange="this.form.submit()">
+            <option disabled th:if="${#request.getParameter('race') == null}" selected>Select Race</option>
+            <option th:if="${#request.getParameter('race') != null}" th:text="${#request.getParameter('race')}"></option>
+            <option th:if="${#request.getParameter('race') != raceChoice.name}" class="text-capitalize" th:each="raceChoice : *{races}"
+                    th:value="${raceChoice.name}"
+                    th:text="${raceChoice.name}"></option>
+        </select>
+    </div>
+</body>
+</html>

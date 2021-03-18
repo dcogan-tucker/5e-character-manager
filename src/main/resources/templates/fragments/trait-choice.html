@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="form-group" th:fragment="traitChoice">
+        <select class="w-100 form-control" th:each="traits : ${apiQueryService.getTraitChoices(#request.getParameter('raceSelect'))}" name="proficiencySelect" id="proficiencySelect">
+            <option value="" disabled selected>Select Trait</option>
+            <option class="text-capitalize" th:each="traitChoice : ${traits.traitOptions}"
+                    th:value="${traitChoice.name}"
+                    th:text="${traitChoice.name}"></option>
+        </select>
+    </div>
+</body>
+</html>
