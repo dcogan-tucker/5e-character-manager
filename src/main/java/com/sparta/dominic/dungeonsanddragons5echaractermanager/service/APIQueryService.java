@@ -3,10 +3,14 @@ package com.sparta.dominic.dungeonsanddragons5echaractermanager.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.dominic.dungeonsanddragons5echaractermanager.pojo.*;
 import com.sparta.dominic.dungeonsanddragons5echaractermanager.utill.DnD5eAPI;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 
+@Service
 public class APIQueryService {
 
     private ObjectMapper objectMapper;
@@ -25,12 +29,17 @@ public class APIQueryService {
         return raceChoice;
     }
 
-    public TraitChoicePJO getTraitChoices(RaceIndexPOJO characterRace) {
-        TraitChoicePJO traitChoice;
+    public Collection<TraitChoicePJO> getTraitChoices(String characterRace) {
+        Collection<TraitChoicePJO> traitChoice = new ArrayList<>();
         try {
-            traitChoice = objectMapper.readValue(new URL(DnD5eAPI.Race.URL + "/" + characterRace.getIndex()), RacePOJO.class).getTraitChoices();
+            if (characterRace != null) {
+                TraitChoicePJO traitPOJO = objectMapper.readValue(new URL(DnD5eAPI.Race.URL + "/" + characterRace.toLowerCase()), RacePOJO.class).getTraitChoices();
+                if (traitPOJO != null) {
+                    traitChoice.add(traitPOJO);
+                }
+            }
         } catch (IOException e) {
-            traitChoice = new TraitChoicePJO();
+            traitChoice = new ArrayList<>();
         }
         return traitChoice;
     }
@@ -45,12 +54,14 @@ public class APIQueryService {
         return classChoice;
     }
 
-    public ProficiencyChoicePOJO getProficiencyChoices(ClassIndexPOJO characterClass) {
-        ProficiencyChoicePOJO proficiencyChoice;
+    public Collection<ProficiencyChoicePOJO> getProficiencyChoices(String characterClass) {
+        Collection<ProficiencyChoicePOJO> proficiencyChoice = new ArrayList<>();
         try {
-            proficiencyChoice = objectMapper.readValue(new URL(DnD5eAPI.Class.URL + "/" + characterClass.getIndex()), ClassPOJO.class).getProficiencyChoices();
+            if (characterClass != null) {
+                proficiencyChoice = objectMapper.readValue(new URL(DnD5eAPI.Class.URL + "/" + characterClass.toLowerCase()), ClassPOJO.class).getProficiencyChoices();
+            }
         } catch (IOException e) {
-            proficiencyChoice = new ProficiencyChoicePOJO();
+            proficiencyChoice = new ArrayList<>();
         }
         return proficiencyChoice;
     }
