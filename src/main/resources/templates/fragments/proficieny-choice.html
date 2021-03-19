@@ -5,12 +5,15 @@
 </head>
 <body>
     <div class="form-group"  th:fragment="proficiencyChoice">
-        <select class="w-100 form-control" th:each="proficiencies : ${apiQueryService.getProficiencyChoices(#request.getParameter('classSelect'))}" name="proficiencySelect" id="proficiencySelect">
-            <option value="" disabled selected>Select Proficiency</option>
-            <option class="text-capitalize" th:each="proficiencyChoice : ${proficiencies.proficiencyOptions}"
-                    th:value="${proficiencyChoice.name}"
-                    th:text="${proficiencyChoice.name}"></option>
-        </select>
+        <script th:src="@{webjars/jquery/3.6.0/jquery.min.js}"></script>
+        <th:block th:each="proficiencies, proficienciesStat : ${apiQueryService.getProficiencyChoices(#request.getParameter('class'))}">
+            <select class="w-100 form-control preferenceSelect" th:each="i : ${#numbers.sequence(1, proficiencies.numberToChoose)}" name="proficiency" id="proficiency">
+                <option disabled selected>Select Proficiency</option>
+                <option th:each="proficiencyChoice : ${proficiencies.proficiencyOptions}"
+                        th:value="${proficiencyChoice.name}"
+                        th:text="${proficiencyChoice.name}"></option>
+            </select>
+        </th:block>
     </div>
 </body>
 </html>

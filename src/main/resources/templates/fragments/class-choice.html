@@ -5,13 +5,13 @@
 </head>
 <body>
     <div class="form-group"  th:fragment="classChoice">
-        <select class="w-100 form-control" th:object="${classSelection}" name="class"
+        <select class="w-100 form-control" id="class" name="class"
                 onchange="this.form.submit()">
-            <option disabled th:if="${#request.getParameter('class') == null}" selected>Select Class</option>
-            <option th:if="${#request.getParameter('class') != null}" th:text="${#request.getParameter('class')}" selected></option>
-            <option th:if="${#request.getParameter('class') != classChoice.name}" class="text-capitalize" th:each="classChoice : *{classes}"
+            <option disabled selected>Select Class</option>
+            <option th:each="classChoice : ${classSelection.classes}"
                     th:value="${classChoice.name}"
-                    th:text="${classChoice.name}"></option>
+                    th:text="${classChoice.name}"
+                    th:selected="${classChoice.name == #request.getParameter('class')}"></option>
         </select>
     </div>
 </body>

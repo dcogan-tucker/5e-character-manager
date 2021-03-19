@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="form-group" th:fragment="traitChoice">
-        <select class="w-100 form-control" th:each="traits : ${apiQueryService.getTraitChoices(#request.getParameter('raceSelect'))}" name="proficiencySelect" id="proficiencySelect">
+        <select class="w-100 form-control" th:each="traits : ${apiQueryService.getTraitChoices(#request.getParameter('race'))}" name="trait" id="trait">
             <option value="" disabled selected>Select Trait</option>
             <option class="text-capitalize" th:each="traitChoice : ${traits.traitOptions}"
                     th:value="${traitChoice.name}"
