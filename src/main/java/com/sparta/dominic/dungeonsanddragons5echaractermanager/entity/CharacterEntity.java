@@ -14,8 +14,11 @@ public class CharacterEntity {
     private UserEntity user;
     private Set<ProficiencyEntity> proficiencies;
     private Set<TraitEntity> traits;
+    private transient String proficienciesString;
+    private transient String traitsString;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "character_id")
     public int getCharacterId() {
         return characterId;
@@ -95,6 +98,24 @@ public class CharacterEntity {
 
     public void setTraits(Set<TraitEntity> traits) {
         this.traits = traits;
+    }
+
+    @Transient
+    public String getProficienciesString() {
+        return proficienciesString;
+    }
+
+    public void setProficienciesString(String proficienciesString) {
+        this.proficienciesString = proficienciesString;
+    }
+
+    @Transient
+    public String getTraitsString() {
+        return traitsString;
+    }
+
+    public void setTraitsString(String traitsString) {
+        this.traitsString = traitsString;
     }
 
     @Override

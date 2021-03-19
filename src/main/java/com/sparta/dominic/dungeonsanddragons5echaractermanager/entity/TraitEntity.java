@@ -9,10 +9,10 @@ import java.util.Set;
 public class TraitEntity {
     private int traitId;
     private String name;
-    private String description;
     private Set<CharacterEntity> characters;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trait_id")
     public int getTraitId() {
         return traitId;
@@ -32,16 +32,6 @@ public class TraitEntity {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "description")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "traits")
     public Set<CharacterEntity> getCharacters() {
         return characters;
@@ -56,11 +46,11 @@ public class TraitEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TraitEntity that = (TraitEntity) o;
-        return Objects.equals(traitId, that.traitId) && Objects.equals(name, that.name) && Objects.equals(description, that.description);
+        return Objects.equals(traitId, that.traitId) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(traitId, name, description);
+        return Objects.hash(traitId, name);
     }
 }
