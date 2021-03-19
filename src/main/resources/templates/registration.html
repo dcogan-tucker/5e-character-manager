@@ -9,7 +9,7 @@
 
 <body>
     <div class="container">
-        <form method="POST" class="form-signin" th:object="${userForm}" th:action="@{/registration}">
+        <form method="POST" class="text-center form-signin" th:object="${userForm}" th:action="@{/registration}">
             <h2 class="form-signin-heading">Create your account</h2>
             <div class="form-group">
                 <input type="text" th:field="*{username}" class="form-control" placeholder="Username"
@@ -28,7 +28,7 @@
                 <span class="has-error" th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{passwordConfirmation}"></span>
             </div>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </form>
 
     </div>

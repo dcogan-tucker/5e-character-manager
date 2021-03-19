@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{webjars/bootstrap/5.0.0-beta2/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <title>Characters</title>
+</head>
+<body>
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <td>Character Name</td>
+            <td>Race</td>
+            <td>Class</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="character : ${characters}">
+            <td th:text="${character.name}"></td>
+            <td th:text="${character.race}"></td>
+            <td th:text="*{character.characterClass}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <script th:src="@{webjars/popper.js/2.5.4/umd/popper.min.js}"></script>
+    <script th:src="@{webjars/bootstrap/5.0.0-beta2/js/bootstrap.min.js}"></script>
+</body>
+</html>
